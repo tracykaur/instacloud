@@ -25,10 +25,10 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    Cloudinary::Uploader.upload(@post.image_url, :public_id => 'sample_remote')
 
     respond_to do |format|
       if @post.save
+        Cloudinary::Uploader.upload(@post.image_url, :public_id => @post.id)
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @post.image_url %>
+  <%= cl_image_tag(@post.id, :width => 300, :height => 250, :crop => :fill) %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
